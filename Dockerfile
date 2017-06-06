@@ -1,3 +1,3 @@
 FROM websphere-liberty:webProfile7
 
-COPY target/bike.war /config/dropins/bike.war
+COPY target/bike-shop.war /config/dropins/bike-shop.war
