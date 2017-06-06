@@ -15,28 +15,6 @@ pipeline {
                }
            }
        }
-       stage('Deploy war to static liberty container') {
-           agent {
-               docker {
-                   image 'alpine'
-               }
-           }
-           steps {
-               sh 'cp target/bike-shop.war /usr/share/jenkins/ref/liberty/bike-shop.war'
-           }
-        }
-       stage('Static container smoke-test') {
-           agent {
-                docker {
-                    image 'liatrio/selenium-firefox'
-                    args '--network=demodeploymentpipeline_default'
-                }
-            }
-            steps {
-                sh 'sleep 25'
-                sh 'ruby bike_spec.rb http://liberty:9080'
-            }
-       }
        stage('Build container') {
            agent any
             steps {
@@ -50,7 +28,7 @@ pipeline {
                 sh 'docker run -p 9080:9080 -d --network=demodeploymentpipeline_default --name bike-shop-liberty bike-shop'
             }
        }
-       stage('Dynamic container smoke-test') {
+       stage('Smoke-test') {
            agent {
                 docker {
                     image 'liatrio/selenium-firefox'
