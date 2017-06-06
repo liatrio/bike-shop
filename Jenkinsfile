@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 sh 'sleep 25'
-                sh 'ruby bike-shop_spec.rb http://liberty:9080'
+                sh 'ruby bike_spec.rb http://liberty:9080'
             }
        }
        stage('Build container') {
@@ -59,7 +59,7 @@ pipeline {
             }
             steps {
                 sh 'sleep 25'
-                sh 'ruby bike-shop_spec.rb http://bike-shop-liberty:9080'
+                sh 'ruby bike_spec.rb http://bike-shop-liberty:9080'
             }
        }
    }
