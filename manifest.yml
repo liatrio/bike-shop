@@ -1,0 +1,6 @@
+  applications:
+   - name: liatrio-hello-world
+     random-route: true
+     path: target/bike-shop.war
+     memory: 512M
+     instances: 1
