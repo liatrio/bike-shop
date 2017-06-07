@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'docker rm -f bike-shop-liberty || true'
                 sh 'docker run -p 9080:9080 -d --network=demodeploymentpipeline_default --name bike-shop-liberty bike-shop'
-                echo 'Should be accessible at http://localhost:9080/bike-shop'
+                input 'Should be accessible at http://localhost:9080/bike-shop'
             }
        }
        stage('Smoke-test') {
